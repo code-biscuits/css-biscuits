@@ -2,7 +2,7 @@
 
 Use css-biscuits to make css soup and spaghetti more digestible. Annotate ALL the end brackets!!!
 
-Watch the text end brackets to see Biscuits in action.
+Watch the text by the end brackets to see Biscuits in action.
 
 ![](./example.gif)
 
@@ -33,6 +33,10 @@ The HTML extension getting fixed will be the blueprint for fixing other extensio
   - default: `80`,
 
 ## Release Notes
+
+### 0.0.3
+
+Use max length for biscuits
 
 ### 0.0.2
 

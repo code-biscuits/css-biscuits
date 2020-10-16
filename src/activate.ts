@@ -48,6 +48,13 @@ export const activate = createActivate(
           contentText = contentText.slice(0, contentText.length - 2);
         }
 
+        let maxLength: number =
+          vscode.workspace.getConfiguration().get(CONFIG_MAX_LENGTH) || 0;
+
+        if (maxLength && contentText.length > maxLength) {
+          contentText = contentText.substr(0, maxLength) + "...";
+        }
+
         const endOfLine = activeEditor.document.lineAt(endLine).range.end;
 
         if (endLine - startLine >= minDistance) {

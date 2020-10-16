@@ -4,6 +4,10 @@ All notable changes to the "html-biscuits" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### 0.0.3
+
+Use max length for biscuits
+
 ### 0.0.2
 
 Update README
