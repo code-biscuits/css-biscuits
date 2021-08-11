@@ -25,6 +25,13 @@ export const activate = createActivate(
       rawTextDocument.uri = rawTextDocument.uri.toString();
       const textDocument = rawTextDocument as cssCore.TextDocument;
 
+      if (
+        ["less", "scss", "css"].indexOf(activeEditor.document.languageId) === -1
+      ) {
+        // we should only be handling "less", "scss", and "css" files for now
+        return [];
+      }
+
       let css = cssCore.getSCSSLanguageService();
       if (activeEditor.document.languageId === "less") {
         css = cssCore.getLESSLanguageService();
