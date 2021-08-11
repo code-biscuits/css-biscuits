@@ -34,7 +34,7 @@ The HTML extension getting fixed will be the blueprint for fixing other extensio
 
 ## Release Notes
 
-### 0.0.4
+### 0.0.5
 
 Make sure this plugin only kicks in for css, less, and scss.
 
