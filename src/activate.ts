@@ -9,17 +9,25 @@ const CONFIG_PREFIX_KEY = "css-biscuits.annotationPrefix";
 const CONFIG_COLOR_KEY = "css-biscuits.annotationColor";
 const CONFIG_DISTANCE_KEY = "css-biscuits.annotationMinDistance";
 const CONFIG_MAX_LENGTH = "css-biscuits.annotationMaxLength";
+const CONFIG_CURSOR_LINE_ONLY_KEY = "css-biscuits.annotationCursorLineOnly";
+const COMMAND_TOGGLE_BISCUITS = "css-biscuits.toggleBiscuitsShowing";
 
 export const activate = createActivate(
   CONFIG_COLOR_KEY,
   CONFIG_DISTANCE_KEY,
   CONFIG_PREFIX_KEY,
+  CONFIG_CURSOR_LINE_ONLY_KEY,
+  COMMAND_TOGGLE_BISCUITS,
   {
-    createDecorations(
+    async createDecorations(
       text: string,
       activeEditor: vscode.TextEditor,
       prefix: string,
-      minDistance: number
+      minDistance: number,
+      cursorLineOnly: boolean,
+      cursorLines: any[],
+      shouldHideBiscuits: boolean,
+      context?: vscode.ExtensionContext
     ) {
       const rawTextDocument = { ...activeEditor.document } as any;
       rawTextDocument.uri = rawTextDocument.uri.toString();
@@ -64,7 +72,12 @@ export const activate = createActivate(
 
         const endOfLine = activeEditor.document.lineAt(endLine).range.end;
 
-        if (endLine - startLine >= minDistance) {
+        if (
+          maxLength > 0 &&
+          !shouldHideBiscuits &&
+          ((!cursorLineOnly && endLine - startLine >= minDistance) ||
+            (cursorLineOnly && cursorLines.indexOf(endLine) > -1))
+        ) {
           decorations.push({
             range: new vscode.Range(
               activeEditor.document.positionAt(endLine),
