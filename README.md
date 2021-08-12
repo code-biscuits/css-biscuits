@@ -30,9 +30,25 @@ The HTML extension getting fixed will be the blueprint for fixing other extensio
   - default: `0`,
 
 - `css-biscuits.annotationMaxLength` _number_ : What is the longest annotation you should see before we cut it off ewith a `...`? A 0 value shows the full string.
+
   - default: `80`,
 
+- `html-biscuits.annotationCursorLineOnly` _boolean_ : Determines whether to show the biscuits on all lines or only the current cursor line. (Supports multi cursor editing)
+  - default: `false`,
+
+## Commands
+
+As we add more commands to change functionality on the fly, we will document them here.
+
+### Toggle Biscuits
+
+You are now able to toggle the biscuits on and off using the VSCode Command `HTML Biscuits: Toggle Biscuits Showing`.
+
 ## Release Notes
+
+### 0.0.7
+
+Allow biscuits to be toggled and add option for cursorLineOnly.
 
 ### 0.0.5
 
